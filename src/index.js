@@ -1,3 +1,7 @@
+/**
+ * 模块依赖
+ */
+
 const path = require('path');
 const ibird = require('ibird');
 const koaLogger = require('koa-logger');
@@ -6,6 +10,7 @@ const i18nAddon = require('ibird-i18n');
 const mongooseAddon = require('ibird-mongoose');
 const accountsAddon = require('ibird-accounts');
 const loggerAddon = require('ibird-logger');
+const openAddon = require('ibird-open');
 
 const appName = 'myApp';
 const app = ibird.newApp({
@@ -15,8 +20,9 @@ const app = ibird.newApp({
 
 app.use(koaLogger());
 
+app.import(openAddon);
 app.import(i18nAddon, { localesDir: path.join(__dirname, 'locales') });
-app.import(loggerAddon);
+app.import(loggerAddon, { logDir: path.join(__dirname, '../__logs') });
 app.import(mongooseAddon);
 app.import(accountsAddon, {
     tokenKey: 'ibird_token',

@@ -4,7 +4,10 @@
   "description": "A boilerplate for ibird.",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "predev": "npm install",
+    "dev": "nodemon --inspect src/index.js",
+    "prestart": "npm install && npm prune",
+    "start": "node app.js",
     "build": "gulp",
     "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js"
   },
@@ -20,11 +23,12 @@
   "homepage": "https://github.com/yinfxs/ibird-boilerplate#readme",
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "ibird": "^1.0.0-alpha.8",
+    "ibird": "^1.0.0-alpha.9",
     "ibird-accounts": "^1.0.0-alpha.2",
     "ibird-i18n": "^1.0.0-alpha.4",
-    "ibird-logger": "^1.0.0-alpha.5",
+    "ibird-logger": "^1.0.0-alpha.6",
     "ibird-mongoose": "^1.0.0-alpha.6",
+    "ibird-open": "^1.0.0-alpha.1",
     "ibird-utils": "^0.9.18",
     "koa-logger": "^3.1.0",
     "koa-session": "^5.5.1"
@@ -37,6 +41,8 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.6.1"
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "nodemon": "^1.12.1"
   }
 }

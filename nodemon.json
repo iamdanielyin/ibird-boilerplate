@@ -1,0 +1,29 @@
+{
+    "restartable": "rs",
+    "ignore": [
+      ".git",
+      ".idea",
+      "log",
+      "public",
+      "dist",
+      "build",
+      "test",
+      "node_modules/**/*"
+    ],
+    "verbose": false,
+    "execMap": {
+      "js": "node"
+    },
+    "events": {
+      "restart": "osascript -e 'display notification \"App restarted\n'$FILENAME'\" with title \"ibird\"'"
+    },
+    "watch": [
+      "src/",
+      "package.json",
+      "nodemon.json"
+    ],
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "ext": "js json"
+  }
