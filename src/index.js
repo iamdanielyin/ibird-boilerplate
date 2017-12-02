@@ -15,6 +15,9 @@ const openAddon = require('ibird-open');
 const appName = 'myApp';
 const app = ibird.newApp({
     name: appName,
+    statics: {
+        '/': path.join(__dirname, 'admin/dist')
+    },
     mongo: `mongodb://localhost/${appName}`,
 });
 
