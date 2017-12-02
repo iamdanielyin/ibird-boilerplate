@@ -2,12 +2,12 @@
   "name": "ibird-boilerplate",
   "version": "1.0.0",
   "description": "A boilerplate for ibird.",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "predev": "npm install",
     "dev": "nodemon --inspect src/index.js",
-    "prestart": "npm install && npm prune",
-    "start": "node app.js",
+    "prestart": "npm install --production && npm prune",
+    "start": "NODE_ENV=production && node index.js",
     "build": "gulp",
     "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js"
   },
@@ -40,8 +40,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.6.1",
+    "gulp-sequence": "^0.4.6",
     "gulp-uglify": "^3.0.0",
     "nodemon": "^1.12.1"
   }
