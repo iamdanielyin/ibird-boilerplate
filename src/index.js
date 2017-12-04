@@ -26,7 +26,9 @@ app.use(koaLogger());
 app.import(openAddon);
 app.import(i18nAddon, { localesDir: path.join(__dirname, 'locales') });
 app.import(loggerAddon, { logDir: path.join(__dirname, 'logs') });
-app.import(mongooseAddon);
+app.import(mongooseAddon, {
+    metadataPath: '/metadata'
+});
 app.import(accountsAddon, {
     tokenKey: 'ibird_token',
     secretOrPrivateKey: 'ibird_app_secret',
