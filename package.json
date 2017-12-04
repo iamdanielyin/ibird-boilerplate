@@ -24,8 +24,8 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "ibird": "^1.0.0-alpha.9",
-    "ibird-accounts": "^1.0.0-alpha.2",
-    "ibird-i18n": "^1.0.0-alpha.7",
+    "ibird-accounts": "^1.0.0-alpha.3",
+    "ibird-i18n": "^1.0.0-alpha.8",
     "ibird-logger": "^1.0.0-alpha.6",
     "ibird-mongoose": "^1.0.0-alpha.8",
     "ibird-open": "^1.0.0-alpha.1",
