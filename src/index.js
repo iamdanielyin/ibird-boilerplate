@@ -11,20 +11,27 @@ const mongooseAddon = require('ibird-mongoose');
 const accountsAddon = require('ibird-accounts');
 const loggerAddon = require('ibird-logger');
 const openAddon = require('ibird-open');
-
+const assign = require('ibird-utils').assign;
+const env = process.env.NODE_ENV || 'development';
+const config = require(`./config/environments/${env}`);
 const appName = 'myApp';
-const app = ibird.newApp({
+
+const app = ibird.newApp(assign({
+    env,
     name: appName,
     statics: {
         '/': path.join(__dirname, 'admin/dist')
     },
     mongo: `mongodb://localhost/${appName}`,
-});
+}, config));
+
+app.keys = [appName];
 
 app.use(koaLogger());
+app.use(session({ key: appName + ':sess' }, app));
 
 app.import(openAddon);
-app.import(i18nAddon, { localesDir: path.join(__dirname, 'locales') });
+app.import(i18nAddon, { localesDir: path.join(__dirname, 'config/locales') });
 app.import(loggerAddon, { logDir: path.join(__dirname, 'logs') });
 app.import(mongooseAddon, {
     metadataPath: '/metadata'
