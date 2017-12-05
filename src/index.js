@@ -25,6 +25,7 @@ const app = ibird.newApp(assign({
     statics: {
         '/': path.join(__dirname, 'admin/dist')
     },
+    prefix: '/api',
     mongo: `mongodb://localhost/${appName}`,
 }, config));
 
@@ -53,7 +54,8 @@ app.import(accountsAddon, {
         } : null;
     },
     whitelists: [
-        'POST /login',
+        'POST /api/login',
+        'GET /api/i18n',
         /^GET\s*\/$/
     ]
 });

@@ -13,6 +13,16 @@
       ]
     }
   },
+  "proxy": {
+    "/api": {
+      "target": "http://127.0.0.1:3000",
+      "changeOrigin": true
+    },
+    "/public": {
+      "target": "http://127.0.0.1:3000",
+      "changeOrigin": true
+    }
+  },
   "externals": {
     "g2": "G2",
     "g-cloud": "Cloud",

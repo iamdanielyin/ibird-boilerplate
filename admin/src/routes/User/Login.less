@@ -1,7 +1,7 @@
 @import "~antd/lib/style/themes/default.less";
 
 .main {
-  width: 368px;
+  width: 100%;
   margin: 0 auto;
 
   .tabs {
@@ -13,7 +13,7 @@
         line-height: 24px;
       }
       .ant-input-affix-wrapper .ant-input:not(:first-child) {
-        padding-left: 34px;
+        padding-left: 32px;
       }
     }
   }
@@ -49,57 +49,13 @@
 
     .submit {
       width: 100%;
-      margin-top: 24px;
+      margin-top: 10px;
     }
 
     :global {
       .ant-form-item-control {
         line-height: 22px;
       }
-    }
-  }
-
-  .iconAlipay, .iconTaobao, .iconWeibo {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: url('https://gw.alipayobjects.com/zos/rmsportal/itDzjUnkelhQNsycranf.svg');
-    margin-left: 16px;
-    vertical-align: middle;
-    cursor: pointer;
-  }
-
-  .iconAlipay {
-    background-position: -24px 0;
-
-    &:hover {
-      background-position: 0 0;
-    }
-  }
-
-  .iconTaobao {
-    background-position: -24px -24px;
-
-    &:hover {
-      background-position: 0 -24px;
-    }
-  }
-
-  .iconWeibo {
-    background-position: -24px -48px;
-
-    &:hover {
-      background-position: 0 -48px;
-    }
-  }
-
-  .other {
-    text-align: left;
-    margin-top: 24px;
-    line-height: 22px;
-
-    .register {
-      float: right;
     }
   }
 }
