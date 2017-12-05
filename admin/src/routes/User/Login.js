@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { routerRedux, Link } from 'dva/router';
-import { Form, Input, Tabs, Button, Icon, Checkbox, Alert } from 'antd';
+import { routerRedux } from 'dva/router';
+import { Form, Input, Button, Icon, Checkbox, Alert, message } from 'antd';
 import styles from './Login.less';
 
 const FormItem = Form.Item;
-const { TabPane } = Tabs;
 
 @connect(state => ({
   login: state.login,
@@ -13,14 +12,7 @@ const { TabPane } = Tabs;
 @Form.create()
 export default class Login extends Component {
   state = {
-    count: 0,
     type: 'account',
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.login.status === 'ok') {
-      this.props.dispatch(routerRedux.push('/'));
-    }
   }
 
   componentWillUnmount() {
@@ -31,18 +23,6 @@ export default class Login extends Component {
     this.setState({
       type: key,
     });
-  }
-
-  onGetCaptcha = () => {
-    let count = 59;
-    this.setState({ count });
-    this.interval = setInterval(() => {
-      count -= 1;
-      this.setState({ count });
-      if (count === 0) {
-        clearInterval(this.interval);
-      }
-    }, 1000);
   }
 
   handleSubmit = (e) => {
@@ -74,15 +54,15 @@ export default class Login extends Component {
   render() {
     const { form, login } = this.props;
     const { getFieldDecorator } = form;
-    const { count, type } = this.state;
+
     return (
       <div className={styles.main}>
         <Form onSubmit={this.handleSubmit}>
           {
-            login.status === 'error' &&
-            login.type === 'account' &&
-            login.submitting === false &&
-            this.renderMessage('账户或密码错误')
+            login.errcode && this.renderMessage(login.errmsg || '账户或密码错误')
+          }
+          {
+            login.data && message.success('登录成功')
           }
           <FormItem>
             {getFieldDecorator('username', {

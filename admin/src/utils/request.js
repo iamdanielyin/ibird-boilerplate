@@ -13,7 +13,6 @@ function checkStatus(response) {
   error.response = response;
   throw error;
 }
-
 /**
  * Requests a URL, returning a promise.
  *

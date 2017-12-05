@@ -45,8 +45,8 @@ app.import(accountsAddon, {
     tokenKey: 'ibird_token',
     secretOrPrivateKey: appName,
     payloadGetter: function (ctx) {
-        const { username, password } = ctx.query;
-        return (username === 'yinfxs' && password === '123456') ? {
+        const { username, password } = ctx.request.body;
+        return (username === 'yinfxs' && password === 'e10adc3949ba59abbe56e057f20f883e') ? {
             username: 'yinfxs',
             name: 'Daniel Yin',
             app: 'ibird',
