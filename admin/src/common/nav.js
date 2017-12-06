@@ -16,6 +16,38 @@ export const getNavData = app => [
     path: '/',
     children: [
       {
+        name: '数据管理',
+        icon: 'home',
+        path: 'home',
+        children: [
+          {
+            name: '菜单管理',
+            path: 'menu',
+            component: dynamicWrapper(app, ['menu'], () => import('../routes/Home/MenuList')),
+          },
+          // {
+          //   name: '参数管理',
+          //   path: 'param',
+          //   component: dynamicWrapper(app, ['param'], () => import('../routes/Home/Param')),
+          // },
+          // {
+          //   name: '权限列表',
+          //   path: 'permission',
+          //   component: dynamicWrapper(app, ['permission'], () => import('../routes/Home/Permission')),
+          // },
+          // {
+          //   name: '角色管理',
+          //   path: 'role',
+          //   component: dynamicWrapper(app, ['role'], () => import('../routes/Home/Role')),
+          // },
+          // {
+          //   name: '用户管理',
+          //   path: 'user',
+          //   component: dynamicWrapper(app, ['user'], () => import('../routes/Home/User')),
+          // },
+        ],
+      },
+      {
         name: 'Dashboard',
         icon: 'dashboard',
         path: 'dashboard',

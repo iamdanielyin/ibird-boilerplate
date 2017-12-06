@@ -46,7 +46,7 @@ app.import(accountsAddon, {
     secretOrPrivateKey: appName,
     payloadGetter: function (ctx) {
         const { username, password } = ctx.request.body;
-        return (username === 'yinfxs' && password === 'e10adc3949ba59abbe56e057f20f883e') ? {
+        return (username === 'admin' && password && password.toLowerCase() === 'e10adc3949ba59abbe56e057f20f883e') ? {
             username: 'yinfxs',
             name: 'Daniel Yin',
             app: 'ibird',
