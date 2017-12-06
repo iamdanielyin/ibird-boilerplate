@@ -43,7 +43,10 @@ export default {
       yield put({
         type: 'changeLoginStatus',
       });
-      if (location.hash.substring(1, location.hash.indexOf('?')) !== '/user/login') {
+      const indexOf = location.hash.indexOf('?');
+      const pathname = indexOf < 0 ?
+        location.hash.substring(1) : location.hash.substring(1, indexOf);
+      if (pathname !== '/user/login') {
         yield put(routerRedux.push('/user/login'));
       }
     },
