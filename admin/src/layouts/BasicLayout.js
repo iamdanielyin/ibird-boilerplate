@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Layout, Menu, Icon, Avatar, Dropdown, Tag, message, Spin } from 'antd';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'dva';
-import { Link, Route, Redirect, Switch } from 'dva/router';
+import { Link, Route, Redirect, Switch, routerRedux } from 'dva/router';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
 import { ContainerQuery } from 'react-container-query';
@@ -84,9 +84,7 @@ class BasicLayout extends React.PureComponent {
   }
   onMenuClick = ({ key }) => {
     if (key === 'logout') {
-      this.props.dispatch({
-        type: 'login/logout',
-      });
+      this.props.dispatch(routerRedux.push('/user/login'));
     }
   }
   getMenuData = (data, parentPath) => {
@@ -155,14 +153,14 @@ class BasicLayout extends React.PureComponent {
                 {icon}<span>{item.name}</span>
               </a>
             ) : (
-              <Link
-                to={itemPath}
-                target={item.target}
-                replace={itemPath === this.props.location.pathname}
-              >
-                {icon}<span>{item.name}</span>
-              </Link>
-            )
+                <Link
+                  to={itemPath}
+                  target={item.target}
+                  replace={itemPath === this.props.location.pathname}
+                >
+                  {icon}<span>{item.name}</span>
+                </Link>
+              )
           }
         </Menu.Item>
       );
