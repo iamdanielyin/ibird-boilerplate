@@ -43,7 +43,7 @@ gulp.task('build:admin', function () {
 
 // 复制其余文件
 gulp.task('copy', function () {
-    return gulp.src(['package.json'], { base: '.' })
+    return gulp.src(['package.json', 'Dockerfile'], { base: '.' })
         .pipe(gulp.dest('dist'));
 });
 

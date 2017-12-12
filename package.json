@@ -6,7 +6,7 @@
   "scripts": {
     "predev": "npm install",
     "dev": "nodemon --inspect src/index.js",
-    "prestart": "npm install --production && npm prune",
+    "prestart": "npm install --only=production",
     "start": "NODE_ENV=production && node index.js",
     "build": "gulp",
     "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js"
@@ -23,8 +23,8 @@
   "homepage": "https://github.com/yinfxs/ibird-boilerplate#readme",
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "ibird": "^1.0.0-alpha.9",
-    "ibird-accounts": "^1.0.0-alpha.4",
+    "ibird": "^1.0.0-alpha.10",
+    "ibird-accounts": "^1.0.0-alpha.5",
     "ibird-i18n": "^1.0.0-alpha.8",
     "ibird-logger": "^1.0.0-alpha.6",
     "ibird-mongoose": "^1.0.0-alpha.8",
