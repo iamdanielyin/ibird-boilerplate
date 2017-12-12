@@ -21,7 +21,7 @@ const accountUtils = require('./utils/account');
 const app = ibird.newApp(assign({
     name: 'myApp',
     statics: {
-        '/': path.join(__dirname, 'admin/dist')
+        '/admin': path.join(__dirname, 'admin/dist')
     },
     prefix: '/api',
     mongo: 'mongodb://localhost/hello-ibird',
@@ -31,7 +31,13 @@ const app = ibird.newApp(assign({
 app.use(koaLogger());
 app.keys = [accountUtils.secret];
 app.use(session({ key: 'ibird:sess' }, app));
-app.get('/', ctx => ctx.body = 'App is running.');
+app.use((ctx, next) => {
+    if (ctx.request.path === '/') {
+        ctx.body = 'App is running.'
+    } else {
+        next();
+    }
+});
 
 // 引用ibird插件
 app.import(openAddon);
