@@ -7,7 +7,7 @@
     "predev": "npm install",
     "dev": "nodemon --inspect src/index.js",
     "prestart": "npm install --only=production",
-    "start": "NODE_ENV=production && node index.js",
+    "start": "NODE_ENV=production node index.js",
     "build": "gulp",
     "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js"
   },
