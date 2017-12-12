@@ -42,9 +42,9 @@ gulp.task('build:admin', function () {
 });
 
 // 复制其余文件
-gulp.task('copy', function () {
-    return gulp.src(['package.json', 'Dockerfile'], { base: '.' })
+gulp.task('copy:others', function () {
+    return gulp.src(['package.json', 'Dockerfile', 'src/**/*.json'])
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', sequence('clean', ['build:server', 'build:admin', 'copy']));
+gulp.task('default', sequence('clean', ['build:server', 'build:admin', 'copy:others']));
