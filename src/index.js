@@ -18,10 +18,14 @@ const configUtils = require('./utils/config');
 const accountUtils = require('./utils/account');
 
 // 初始化应用实例
+const uploadDir = path.join(__dirname, 'upload');
 const app = ibird.newApp(assign({
     name: 'myApp',
+    multipart: true,
+    uploadDir,
     statics: {
-        '/admin': path.join(__dirname, 'admin/dist')
+        '/admin': path.join(__dirname, 'admin/dist'),
+        '/upload': uploadDir
     },
     prefix: '/api',
     mongo: 'mongodb://localhost/hello-ibird',
