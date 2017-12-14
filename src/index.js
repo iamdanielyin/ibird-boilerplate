@@ -31,11 +31,11 @@ const app = ibird.newApp(assign({
 app.use(koaLogger());
 app.keys = [accountUtils.secret];
 app.use(session({ key: 'ibird:sess' }, app));
-app.use((ctx, next) => {
+app.use(async (ctx, next) => {
     if (ctx.request.path === '/') {
         ctx.body = 'App is running.'
     } else {
-        next();
+        await next();
     }
 });
 
