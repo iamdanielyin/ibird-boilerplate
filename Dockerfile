@@ -1,6 +1,6 @@
 FROM node:carbon-alpine
 
-RUN apk update && apk add curl bash tree tzdata \
+RUN apk update && apk add tzdata \
     && rm -f /etc/localtime \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
