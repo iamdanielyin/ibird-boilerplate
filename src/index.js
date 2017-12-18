@@ -16,6 +16,7 @@ const openAddon = require('ibird-open');
 
 const configUtils = require('./utils/config');
 const accountUtils = require('./utils/account');
+const callbackUtils = require('./utils/callback');
 
 // 初始化应用实例
 const uploadDir = path.join(__dirname, 'upload');
@@ -62,4 +63,4 @@ app.useDir(path.join(__dirname, 'middleware'));
 app.mountDir(path.join(__dirname, 'routes'));
 app.modelDir(path.join(__dirname, 'models'));
 
-app.play();
+app.play(callbackUtils(app));
