@@ -63,4 +63,4 @@ app.useDir(path.join(__dirname, 'middleware'));
 app.mountDir(path.join(__dirname, 'routes'));
 app.modelDir(path.join(__dirname, 'models'));
 
-app.play(callbackUtils(app));
+app.play(callbackUtils.bind(app));
