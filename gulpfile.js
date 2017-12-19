@@ -33,8 +33,11 @@ gulp.task('build:server', function () {
 
 // 复制其余文件
 gulp.task('copy:others', function () {
-    return gulp.src(['package.json', 'Dockerfile', 'src/**/*.json'])
-        .pipe(gulp.dest('dist'));
+    return gulp.src([
+        'package.json',
+        'Dockerfile',
+        'src/**/*.json'
+    ]).pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', sequence('clean', ['build:server', 'copy:others']));
