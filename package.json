@@ -6,17 +6,22 @@
   "scripts": {
     "predev": "npm install",
     "dev": "nodemon --inspect src/index.js",
-    "prestart": "npm install --only=production",
+    "prestart": "NODE_ENV=production npm install --only=production",
     "start": "NODE_ENV=production node index.js",
     "build": "gulp",
-    "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js"
+    "postbuild": "npm run doc",
+    "doc": "apidoc -i src/docs/ -o dist/assets/docs/",
+    "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js",
+    "pdev": "sh bin/merge_master.sh",
+    "ptest": "sh bin/merge_test.sh",
+    "pprod": "sh bin/merge_prod.sh"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yinfxs/ibird-boilerplate.git"
   },
   "author": "yinfxs <yinfxs@gmail.com>",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/yinfxs/ibird-boilerplate/issues"
   },
@@ -34,6 +39,7 @@
     "koa-session": "^5.5.1"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
@@ -47,5 +53,16 @@
     "gulp-uglify": "^3.0.0",
     "ip": "^1.1.5",
     "nodemon": "^1.12.1"
+  },
+  "apidoc": {
+    "name": "ibird-boilerplate",
+    "version": "1.0.0",
+    "description": "模型默认接口文档",
+    "title": "ibird-boilerplate - 模型默认接口文档",
+    "sampleUrl": "http://localhost:3000/api",
+    "template": {
+      "withCompare": false,
+      "withGenerator": false
+    }
   }
 }
