@@ -19,14 +19,17 @@ const accountUtils = require('./utils/account');
 const callbackUtils = require('./utils/callback');
 
 // 初始化应用实例
-const uploadDir = path.join(__dirname, 'upload');
+const assetsDir = path.join(__dirname, 'assets');
 const app = ibird.newApp(assign({
     name: 'myApp',
     multipart: true,
-    uploadDir,
+    cross: true,
+    uploadDir: path.join(assetsDir, 'upload'),
     statics: {
         '/admin': path.join(__dirname, 'admin/dist'),
-        '/upload': uploadDir
+        '/assets': assetsDir,
+        '/assets/download': path.join(assetsDir, 'download'),
+        '/assets/docs': path.join(assetsDir, 'docs')
     },
     prefix: '/api',
     mongo: 'mongodb://localhost/hello-ibird',
@@ -36,13 +39,6 @@ const app = ibird.newApp(assign({
 app.use(koaLogger());
 app.keys = [accountUtils.secret];
 app.use(session({ key: 'ibird:sess' }, app));
-app.use(async (ctx, next) => {
-    if (ctx.request.path === '/') {
-        ctx.body = 'App is running.'
-    } else {
-        await next();
-    }
-});
 
 // 引用ibird插件
 app.import(openAddon);

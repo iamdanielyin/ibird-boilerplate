@@ -21,7 +21,8 @@ module.exports.secret = 'ibird_secret';
 module.exports.whitelist = [
     'POST /api/login',
     'GET /api/i18n',
-    /^GET\s*\/$/
+    /^GET\s*\/$/,
+    /route\//gi
 ];
 
 /**
