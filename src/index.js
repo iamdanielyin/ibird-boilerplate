@@ -23,10 +23,8 @@ const assetsDir = path.join(__dirname, 'assets');
 const app = ibird.newApp(assign({
     name: 'myApp',
     multipart: true,
-    cross: true,
     uploadDir: path.join(assetsDir, 'upload'),
     statics: {
-        '/admin': path.join(__dirname, 'admin/dist'),
         '/assets': assetsDir,
         '/assets/download': path.join(assetsDir, 'download'),
         '/assets/docs': path.join(assetsDir, 'docs')

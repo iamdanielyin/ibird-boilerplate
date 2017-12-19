@@ -31,20 +31,10 @@ gulp.task('build:server', function () {
         .pipe(gulp.dest(dest));
 });
 
-// 编译管理端
-gulp.task('build:admin', function () {
-    execSync('npm run build', {
-        cwd: path.resolve(__dirname, 'admin'),
-        maxBuffer: 20000 * 1024
-    });
-    return gulp.src(['admin/dist/**/*'], { base: '.' })
-        .pipe(gulp.dest('dist'));
-});
-
 // 复制其余文件
 gulp.task('copy:others', function () {
     return gulp.src(['package.json', 'Dockerfile', 'src/**/*.json'])
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', sequence('clean', ['build:server', 'build:admin', 'copy:others']));
+gulp.task('default', sequence('clean', ['build:server', 'copy:others']));
