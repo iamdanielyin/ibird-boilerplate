@@ -30,7 +30,8 @@ const app = ibird.newApp(assign({
         '/assets/docs': path.join(assetsDir, 'docs')
     },
     prefix: '/api',
-    mongo: 'mongodb://localhost/hello-ibird',
+    middlewareDir: path.join(__dirname, 'middleware'),
+    routesDir: path.join(__dirname, 'routes')
 }, configUtils()));
 
 // 引用koa中间件
@@ -43,7 +44,9 @@ app.import(openAddon);
 app.import(i18nAddon, { localesDir: path.join(__dirname, 'config/locales') });
 app.import(loggerAddon, { logDir: path.join(__dirname, 'logs') });
 app.import(mongooseAddon, {
-    metadataPath: '/metadata'
+    mongo: 'mongodb://localhost/hello-ibird',
+    metadataPath: '/metadata',
+    dir: path.join(__dirname, 'models')
 });
 app.import(accountsAddon, {
     tokenKey: accountUtils.tokenKey,
@@ -51,10 +54,5 @@ app.import(accountsAddon, {
     payloadGetter: accountUtils.login,
     whitelist: accountUtils.whitelist
 });
-
-// 挂载相关目录
-app.useDir(path.join(__dirname, 'middleware'));
-app.mountDir(path.join(__dirname, 'routes'));
-app.modelDir(path.join(__dirname, 'models'));
 
 app.play(callbackUtils.bind(app));
