@@ -56,5 +56,4 @@
  *          "ok": 1
  *       }
  *   }
- * @apiSampleRequest off
  */

@@ -61,5 +61,4 @@
  *          "value": "参数值A3"
  *       }
  *   }
- * @apiSampleRequest off
  */
