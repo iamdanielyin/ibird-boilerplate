@@ -12,6 +12,7 @@ const i18nAddon = require('ibird-i18n');
 const mongooseAddon = require('ibird-mongoose');
 const accountsAddon = require('ibird-accounts');
 const loggerAddon = require('ibird-logger');
+const taskAddon = require('ibird-task');
 const openAddon = require('ibird-open');
 
 const configUtils = require('./utils/config');
@@ -43,6 +44,7 @@ app.use(session({ key: 'ibird:sess' }, app));
 app.import(openAddon);
 app.import(i18nAddon, { localesDir: path.join(__dirname, 'config/locales') });
 app.import(loggerAddon, { logDir: path.join(__dirname, 'logs') });
+app.import(taskAddon, { dir: path.join(__dirname, 'tasks') });
 app.import(mongooseAddon, {
     mongo: 'mongodb://localhost/hello-ibird',
     metadataPath: '/metadata',

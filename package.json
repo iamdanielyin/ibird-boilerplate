@@ -34,6 +34,7 @@
     "ibird-logger": "^1.0.0-alpha.7",
     "ibird-mongoose": "^1.0.0-alpha.15",
     "ibird-open": "^1.0.0-alpha.1",
+    "ibird-task": "^1.0.0-alpha.3",
     "ibird-utils": "^0.9.18",
     "koa-logger": "^3.1.0",
     "koa-session": "^5.5.1"
