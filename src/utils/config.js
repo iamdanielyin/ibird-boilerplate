@@ -14,6 +14,9 @@ module.exports = env => {
     env = env || process.env.NODE_ENV || 'development';
     const fileName = path.join(__dirname, `../config/environments/${env}.json`);
     try {
+        console.log(`\n/////////////////////////////////`);
+        console.log(`/// 应用环境变量 => ${env} ///`);
+        console.log(`/////////////////////////////////\n`);
         const data = fs.readFileSync(fileName).toString();
         return JSON.parse(data);
     } catch (err) {
