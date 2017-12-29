@@ -28,7 +28,7 @@
   "homepage": "https://github.com/yinfxs/ibird-boilerplate#readme",
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "ibird": "^1.0.0-alpha.12",
+    "ibird": "^1.0.0-alpha.14",
     "ibird-accounts": "^1.0.0-alpha.5",
     "ibird-i18n": "^1.0.0-alpha.10",
     "ibird-logger": "^1.0.0-alpha.7",

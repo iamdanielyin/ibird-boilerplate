@@ -23,7 +23,6 @@ const callbackUtils = require('./utils/callback');
 const assetsDir = path.join(__dirname, 'assets');
 const app = ibird.newApp(assign({
     name: 'myApp',
-    multipart: true,
     uploadDir: path.join(assetsDir, 'upload'),
     statics: {
         '/assets': assetsDir,
