@@ -1,5 +1,6 @@
 FROM node:carbon-alpine
 
+RUN echo "http://mirrors.aliyun.com/alpine/v3.6/main/" > /etc/apk/repositories
 RUN apk update && apk add tzdata \
     && rm -f /etc/localtime \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
