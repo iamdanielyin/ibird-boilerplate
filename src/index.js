@@ -32,7 +32,7 @@ const app = ibird.newApp(assign({
     prefix: '/api',
     middlewareDir: path.join(__dirname, 'middleware'),
     routesDir: path.join(__dirname, 'routes')
-}, configUtils(process.env.IBIRD_ENV)));
+}, configUtils(process.env.CONFIG_ENV)));
 
 // 引用koa中间件
 app.use(koaLogger());

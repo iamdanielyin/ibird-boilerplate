@@ -29,7 +29,7 @@ _patch(){
 
     docker build -t $name ./dist
     docker run --restart=always -d \
-        -e "IBIRD_ENV=$IBIRD_ENV" \
+        -e "CONFIG_ENV=$CONFIG_ENV" \
         --name $name \
         --expose 3000 \
         $name
