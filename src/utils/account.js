@@ -20,6 +20,8 @@ module.exports.secret = 'ibird_secret';
  */
 module.exports.whitelist = [
     'POST /api/login',
+    'POST /api/user',
+    'GET /api/metadata',
     'GET /api/i18n',
     'GET /api/metadata',
     'GET /api/appinfo',
