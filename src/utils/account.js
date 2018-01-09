@@ -37,5 +37,5 @@ module.exports.login = async ctx => {
     const { username, password } = ctx.request.body;
     const User = mongoose.model('User');
     const user = await User.findOne({ username: new RegExp(username, 'i'), password }, { password: -1 });
-    return user;
+    return user ? user._doc : null;
 };
