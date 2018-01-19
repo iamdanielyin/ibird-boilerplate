@@ -5,7 +5,7 @@
  * @apiGroup Model
  * @apiHeader {String="application/json"} Content-Type="application/json" 请求内容类型
  * @apiParam {String} modelName 模型/元数据名称（对应元数据结构中的name值）
- * @apiParam {String="PAGE","ALL"} range 查询模式（"PAGE"表示分页查询；"ALL"表示全部模式）
+ * @apiParam {String="PAGE","ALL","ONE"} range 查询模式（"PAGE"表示分页查询；"ALL"表示全部模式）
  * @apiParam {String} sort 排序字符串（指定排序的key值，格式为"-created,code"，负号开头表示逆序）
  * @apiParam {Number} page 页码（分页属性，从1开始，ALL模式可忽略）
  * @apiParam {Number} size 每页条数（分页属性，ALL模式可忽略）
@@ -115,6 +115,21 @@
  * 
  *          4.查询创建时间大于等于"1513602998"且修改时间小于等于"1514736000"的数据，并按每页50条分页，返回第19页的数据
  *              http://test.domain.com/api/param?size=50&page=19&cond={"$and":[{"createdAt":{"$gte":1513602998}},{"updatedAt":{"$lte":1513602998}}]}
+ * 
+ * @apiParamExample 单个查询
+ *      场景说明：
+ *          有时候你可能只需要返回一条记录，可指定range为"ONE"实现单个查询。
+ *          单个查询的请求参数与响应参数和分页查询完全一样，只是page和size都默认且只能固定为1。
+ * 
+ *      示例列表：
+ *          1.按创建时间逆序，只查询一条记录
+ *              http://test.domain.com/api/param?range=ONE&size=30&page=1&sort=-createdAt
+ * 
+ *          2.查询创建时间大于"1513602998"的数据，并按创建时间逆序，只查询一条记录
+ *              http://test.domain.com/api/param?range=ONE&cond={"createdAt":{"$gt":1513602998}}&sort=-createdAt
+ * 
+ *          3.查询创建时间大于等于"1513602998"且修改时间小于等于"1514736000"的数据，只查询一条记录
+ *              http://test.domain.com/api/param?range=ONE&cond={"$and":[{"createdAt":{"$gte":1513602998}},{"updatedAt":{"$lte":1513602998}}]}
  * 
  * @apiParamExample 排序查询
  *      示例列表：
