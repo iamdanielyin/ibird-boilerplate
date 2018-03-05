@@ -1,6 +1,10 @@
-const pkgjson = (process.env.NODE_ENV !== 'production') ?
-    require('../../package.json') :
-    require('../package.json');
+let pkgjson;
+
+try {
+    pkgjson = require('../package.json');
+} catch (error) {
+    pkgjson = require('../../package.json');
+}
 
 module.exports = {
     path: '/appinfo',

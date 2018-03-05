@@ -6,7 +6,6 @@
   "scripts": {
     "predev": "npm install",
     "dev": "nodemon --inspect src/index.js",
-    "prestart": "NODE_ENV=production npm install --only=production",
     "start": "NODE_ENV=production node index.js",
     "build": "gulp",
     "postbuild": "npm run doc",

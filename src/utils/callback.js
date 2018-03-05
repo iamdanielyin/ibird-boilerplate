@@ -2,10 +2,12 @@
  * 导出模块
  */
 
+const env = require('./config')(process.env.CONFIG_ENV, true);
+
 module.exports = function () {
     let port = this.c().port, message = `Running on port ${port}`;
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (env === 'dev') {
         const boxen = require('boxen');
         const chalk = require('chalk');
         const ip = require('ip');
