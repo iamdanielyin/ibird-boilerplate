@@ -6,7 +6,7 @@
 
 git checkout master
 
-branches=("develop" "test" "prod")
+branches=("test" "uat" "prod")
 for i in ${!branches[@]}
 do
     branch=${branches[$i]}
@@ -14,4 +14,4 @@ do
     git push --set-upstream origin $branch
 done
 
-git checkout develop
+git checkout master

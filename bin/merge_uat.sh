@@ -1,12 +1,12 @@
 #!/bin/bash
-# 合并到test
+# 合并到uat
 # 分支合并规定为单向，顺序为：feature-xxx -> master -> test -> uat -> prod
 # Author:   Daniel
 # Date:     2017/12/11
 # Version:  1.0
 
-git checkout master && git pull
 git checkout test && git pull
-git merge master --no-ff -m "合并master到test：$(date '+%Y-%m-%d %T')"
+git checkout uat && git pull
+git merge test --no-ff -m "合并test到uat：$(date '+%Y-%m-%d %T')"
 git push origin
 git checkout master
