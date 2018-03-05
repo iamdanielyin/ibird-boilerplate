@@ -9,6 +9,7 @@ const fs = require('fs');
  * 导出函数
  * 当文件不存在时，抛出异常
  * @param {string} env - 环境变量
+ * @param {boolean} [onlyKey] - 只返回环境变量的键
  */
 
 const cache = {};
