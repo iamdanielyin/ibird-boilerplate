@@ -6,34 +6,12 @@
 
 name="ibird-boilerplate"
 
-_clear(){
-    none_image=`docker images -f 'dangling=true' -q`
-    if [ "_$none_image" != "_" ]; then
-        docker rmi -f $none_image
-        echo "删除none的镜像 --> ok!"
-    fi
+docker rm -f $name
+docker rmi -f $name
 
-    docker system prune -a -f
-    echo "删除未使用的数据 --> ok!"
-
-    unused_volume=`docker volume ls -qf dangling=true`
-    if [ "_$unused_volume" != "_" ]; then
-        docker volume rm $unused_volume
-    fi
-    echo "删除未使用的挂载卷 --> ok!"
-}
-
-_patch(){
-    docker rm -f $name
-    docker rmi -f $name
-
-    docker build -t $name ./dist
-    docker run --restart=always -d \
-        -e "CONFIG_ENV=$CONFIG_ENV" \
-        --name $name \
-        --expose 3000 \
-        $name
-}
-
-_patch
-_clear
+docker build -t $name ./dist
+docker run --restart=always -d \
+	-e "CONFIG_ENV=$CONFIG_ENV" \
+	--name $name \
+	--expose 3000 \
+	$name
