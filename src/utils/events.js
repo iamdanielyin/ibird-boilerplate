@@ -21,7 +21,7 @@ module.exports = app => {
         displayName: '创建时间',
         index: true
       },
-      _createdFormat: {
+      _created_str: {
         type: String,
         displayName: '创建时间（格式化）'
       },
@@ -35,7 +35,7 @@ module.exports = app => {
         displayName: '修改时间',
         index: true
       },
-      _modifiedFormat: {
+      _modified_str: {
         type: String,
         displayName: '修改时间（格式化）'
       },
@@ -50,11 +50,14 @@ module.exports = app => {
       }
     });
 
+    // 格式化字符串
+    const TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
+
     // 修改前中间件
     obj.schema.pre('update', function (next) {
       if (!this._modified) {
         this._modified = moment().unix();
-        this._modifiedFormat = moment(this._modified, 'X').format(utility.timeFormat);
+        this._modified_str = moment(this._modified, 'X').format(TIME_FORMAT);
       }
       next();
     });
@@ -63,7 +66,7 @@ module.exports = app => {
     obj.schema.pre('save', function (next) {
       if (!this._created) {
         this._created = moment().unix();
-        this._createdFormat = moment(this._created, 'X').format(utility.timeFormat);
+        this._created_str = moment(this._created, 'X').format(TIME_FORMAT);
       }
       next();
     });
@@ -77,5 +80,5 @@ module.exports = app => {
       remove: true
     };
   });
-  
+
 }
