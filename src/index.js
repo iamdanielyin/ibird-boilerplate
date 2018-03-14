@@ -18,6 +18,7 @@ const openAddon = require('ibird-open');
 const configUtils = require('./utils/config');
 const accountUtils = require('./utils/account');
 const callbackUtils = require('./utils/callback');
+const eventsUtils = require('./utils/events');
 
 // 初始化应用实例
 const assetsDir = path.join(__dirname, 'assets');
@@ -33,6 +34,9 @@ const app = ibird.newApp(assign({
     routesDir: path.join(__dirname, 'routes')
 }, configUtils(process.env.CONFIG_ENV)));
 
+// 事件订阅
+eventsUtils(app);
+
 // 引用koa中间件
 app.use(koaLogger());
 app.keys = [accountUtils.secret];
@@ -46,7 +50,8 @@ app.import(taskAddon, { dir: path.join(__dirname, 'tasks') });
 app.import(mongooseAddon, {
     mongo: 'mongodb://localhost/hello-ibird',
     metadataPath: '/metadata',
-    dir: path.join(__dirname, 'models')
+    dir: path.join(__dirname, 'models'),
+    tombstoneKeyGetter: name => '_dr'
 });
 app.import(accountsAddon, {
     tokenKey: accountUtils.tokenKey,
