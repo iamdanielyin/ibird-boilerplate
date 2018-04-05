@@ -55,10 +55,8 @@ module.exports = app => {
 
     // 修改前中间件
     obj.schema.pre('update', function (next) {
-      if (!this._modified) {
-        this._modified = moment().unix();
-        this._modified_str = moment(this._modified, 'X').format(TIME_FORMAT);
-      }
+      this._modified = moment().unix();
+      this._modified_str = moment(this._modified, 'X').format(TIME_FORMAT);
       next();
     });
 
