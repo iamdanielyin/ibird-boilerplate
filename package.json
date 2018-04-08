@@ -10,10 +10,7 @@
     "build": "gulp",
     "postbuild": "npm run doc",
     "doc": "apidoc -i src/docs/ -o dist/assets/docs/",
-    "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js",
-    "pdev": "sh bin/merge_master.sh",
-    "ptest": "sh bin/merge_test.sh",
-    "pprod": "sh bin/merge_prod.sh"
+    "test": "mocha -t 5000 -s 1000 --recursive test/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -52,7 +49,9 @@
     "gulp-sequence": "^0.4.6",
     "gulp-uglify": "^3.0.0",
     "ip": "^1.1.5",
-    "nodemon": "^1.12.1"
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "supertest": "^3.0.0"
   },
   "apidoc": {
     "name": "ibird-boilerplate",
