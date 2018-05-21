@@ -18,7 +18,7 @@ module.exports = (env, onlyKey) => {
         return onlyKey ? cache.env : cache.config;
     }
 
-    env = process.env.CONFIG_ENV = (env || process.env.CONFIG_ENV || 'dev');
+    env = process.env.CONFIG_ENV = (env || process.env.CONFIG_ENV || 'local');
 
     const fileName = path.join(__dirname, `../config/environments/${env}.json`);
     try {

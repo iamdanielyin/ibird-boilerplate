@@ -1,4 +1,4 @@
 {
     "env": "prod",
-    "cross": {}
+    "mongo": "mongodb://localhost/ibird"
 }

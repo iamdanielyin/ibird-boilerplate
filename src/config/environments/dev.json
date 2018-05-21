@@ -1,4 +1,5 @@
 {
     "env": "dev",
-    "cross": true
+    "cross": true,
+    "mongo": "mongodb://localhost/ibird"
 }

@@ -7,8 +7,7 @@ const env = require('./config')(process.env.CONFIG_ENV, true);
 module.exports = function () {
     let port = this.c().port, message = `Running on port ${port}`;
 
-    if (env === 'dev') {
-        const boxen = require('boxen');
+    if (env === 'local') {
         const chalk = require('chalk');
         const ip = require('ip');
         const { writeSync: copy } = require('clipboardy');
@@ -27,14 +26,8 @@ module.exports = function () {
 
         try {
             copy(networkURL || localURL)
-            message += `\n\n${chalk.grey('Copied network address to clipboard!')}`
+            message += `\n\n${chalk.grey('Copied network address to clipboard!\n')}`
         } catch (err) { }
-
-        message = boxen(message, {
-            padding: 1,
-            borderColor: 'green',
-            margin: 1
-        });
     }
     console.log(message);
 };

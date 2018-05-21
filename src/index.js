@@ -48,7 +48,6 @@ app.import(i18nAddon, { localesDir: path.join(__dirname, 'config/locales') });
 app.import(loggerAddon, { logDir: path.join(__dirname, 'logs') });
 app.import(taskAddon, { dir: path.join(__dirname, 'tasks') });
 app.import(mongooseAddon, {
-    mongo: 'mongodb://localhost/hello-ibird',
     metadataPath: '/metadata',
     dir: path.join(__dirname, 'models'),
     tombstoneKeyGetter: name => '_dr'
