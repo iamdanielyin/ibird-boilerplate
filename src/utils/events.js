@@ -3,6 +3,8 @@
  * @param {*} app 
  */
 
+const moment = require('moment');
+
 module.exports = app => {
 
   // 模型注册前事件
@@ -21,7 +23,7 @@ module.exports = app => {
         displayName: '创建时间',
         index: true
       },
-      _created_str: {
+      _created_fmt: {
         type: String,
         displayName: '创建时间（格式化）'
       },
@@ -35,7 +37,7 @@ module.exports = app => {
         displayName: '修改时间',
         index: true
       },
-      _modified_str: {
+      _modified_fmt: {
         type: String,
         displayName: '修改时间（格式化）'
       },
@@ -56,7 +58,7 @@ module.exports = app => {
     // 修改前中间件
     obj.schema.pre('update', function (next) {
       this._modified = moment().unix();
-      this._modified_str = moment(this._modified, 'X').format(TIME_FORMAT);
+      this._modified_fmt = moment(this._modified, 'X').format(TIME_FORMAT);
       next();
     });
 
@@ -64,7 +66,10 @@ module.exports = app => {
     obj.schema.pre('save', function (next) {
       if (!this._created) {
         this._created = moment().unix();
-        this._created_str = moment(this._created, 'X').format(TIME_FORMAT);
+        this._created_fmt = moment(this._created, 'X').format(TIME_FORMAT);
+        
+        this._modified = moment().unix();
+        this._modified_fmt = moment(this._modified, 'X').format(TIME_FORMAT);
       }
       next();
     });
