@@ -12,13 +12,13 @@ A boilerplate for ibird.
 ### In the development environment:
 
 ```shell
-$ npm run dev
+npm run dev
 ```
 
 ### Build for the production environment:
 
 ```shell
-$ npm run build
+npm run build
 ```
 
 then copy the `dist` directory to your server and run `npm start` to start the application.
