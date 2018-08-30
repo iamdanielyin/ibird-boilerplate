@@ -6,16 +6,15 @@ A boilerplate for ibird.
 
 [Node.js](https://nodejs.org/en/) (>=7.6.x, 8.9.1 preferred), npm version 3+.
 
-
 ## Usage
 
-### In the development environment:
+### In the development environment
 
 ```shell
 npm run dev
 ```
 
-### Build for the production environment:
+### Build for the production environment
 
 ```shell
 npm run build
