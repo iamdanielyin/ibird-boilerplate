@@ -5,7 +5,6 @@
 const gulp = require("gulp");
 const babel = require("gulp-babel");
 const uglify = require('gulp-uglify');
-const sequence = require('gulp-sequence');
 const pipeline = require('readable-stream').pipeline;
 const del = require('del');
 const dest = 'dist';
@@ -44,4 +43,4 @@ gulp.task('copy:others', function () {
     );
 });
 
-gulp.task('default', sequence('clean', ['build:server', 'copy:others']));
+gulp.task('default', gulp.series('clean', ['build:server', 'copy:others']));

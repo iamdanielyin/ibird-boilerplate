@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/yinfxs/ibird-boilerplate#readme",
   "dependencies": {
-    "@babel/runtime": "^7.4.3",
+    "@babel/runtime": "^7.7.7",
     "ibird": "latest",
     "ibird-accounts": "latest",
     "ibird-i18n": "latest",
@@ -33,24 +33,25 @@
     "ibird-task": "latest",
     "ibird-utils": "latest",
     "koa-logger": "^3.1.0",
-    "koa-session": "^5.5.1"
+    "koa-session": "^5.5.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.2"
   },
   "devDependencies": {
-    "apidoc": "^0.17.6",
-    "@babel/core": "^7.4.3",
+    "@babel/core": "^7.7.7",
     "@babel/plugin-transform-runtime": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "chalk": "^2.3.0",
-    "clipboardy": "^1.2.2",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "@babel/preset-env": "^7.7.7",
+    "apidoc": "^0.19.0",
+    "chalk": "^3.0.0",
+    "clipboardy": "^2.1.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-sequence": "^1.0.0",
     "gulp-uglify": "^3.0.2",
     "ip": "^1.1.5",
-    "mocha": "^4.0.1",
-    "nodemon": "^1.12.1",
-    "supertest": "^3.0.0"
+    "mocha": "^6.2.2",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   },
   "apidoc": {
     "name": "ibird-boilerplate",
